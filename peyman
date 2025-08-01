@@ -1,0 +1,65 @@
+import sys
+import time
+import os
+import requests
+
+# Color codes
+RED = "\033[1m\033[31m"
+GREEN = "\033[1m\033[32m"
+CYAN = "\033[1m\033[36m"
+WHITE = "\033[1m\033[37m"
+BOLD = "\033[1m"
+RESET = "\033[0m"
+
+# Telegram Bot info input
+def get_bot_info():
+    print(f"{CYAN}Enter your Telegram Bot Token:{RESET}")
+    token = input("> ").strip()
+    print(f"{CYAN}Enter your Telegram Chat ID (numeric):{RESET}")
+    chat_id = input("> ").strip()
+    return token, chat_id
+
+# Send a message to Telegram using bot API
+def send_telegram_message(token, chat_id, message):
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    data = {
+        "chat_id": chat_id,
+        "text": message
+    }
+    try:
+        response = requests.post(url, data=data)
+        if response.status_code == 200:
+            print(f"{GREEN}Message sent successfully!{RESET}")
+        else:
+            print(f"{RED}Failed to send message. Status code: {response.status_code}{RESET}")
+    except Exception as e:
+        print(f"{RED}Error sending message: {e}{RESET}")
+
+# Main menu (simplified without external URL scripts)
+def print_menu():
+    print(f"\n{RED}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
+    print(f"FHCK TOOL [ UPDATED ] BY — @MMHHN")
+    print(f"▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
+    print(f"{CYAN}1.{RESET} {BOLD}Send Test Message to Telegram{RESET}")
+    print(f"{CYAN}0.{RESET} {BOLD}EXIT{RESET}")
+
+def menu():
+    token, chat_id = get_bot_info()
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print_menu()
+        choice = input(f"\n{WHITE}Enter your choice: {RESET}")
+
+        if choice == '0':
+            print(f"{GREEN}Goodbye!{RESET}")
+            break
+        elif choice == '1':
+            message = "Hello from your Python Telegram Bot!"
+            send_telegram_message(token, chat_id, message)
+            input("Press Enter to continue...")
+        else:
+            print(f"{RED}Invalid choice! Try again.{RESET}")
+            input("Press Enter to continue...")
+
+if __name__ == "__main__":
+    menu()
