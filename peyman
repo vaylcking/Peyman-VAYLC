@@ -38,7 +38,7 @@ def send_telegram_message(token, chat_id, message):
 # Main menu (simplified without external URL scripts)
 def print_menu():
     print(f"\n{RED}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
-    print(f"FHCK TOOL [ UPDATED ] BY — @MMHHN")
+    print(f"FHCK TOOL [ UPDATED ] BY — @userummem")
     print(f"▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     print(f"{CYAN}1.{RESET} {BOLD}Send Test Message to Telegram{RESET}")
     print(f"{CYAN}0.{RESET} {BOLD}EXIT{RESET}")
